@@ -1,3 +1,6 @@
+using MySql.Data.MySqlClient;
+using System.Diagnostics.Eventing.Reader;
+using System.Linq.Expressions;
 namespace WinFormsApp1
 {
     public partial class Login : Form
@@ -8,19 +11,37 @@ namespace WinFormsApp1
         }
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (IDTextBox.Text == "1234" && PASSTextBox.Text == "1234")
+            string connStr = "server=127.0.0.1;user id=root;database=ids;password=";
+            try
             {
-                new LoginOK().Show();
-                this.Visible = false;
-            }
+                MySqlConnection mySqlConnection = new MySqlConnection(connStr);
 
-            else
-            {
-                MessageBox.Show("IDまたはパスワードが間違っています。");
-                IDTextBox.Clear();
-                PASSTextBox.Clear();
-                IDTextBox.Focus();
+                string id = IDTextBox.Text.ToString();
+                string pass = PASSTextBox.Text.ToString();
+                if (String.IsNullOrEmpty(id) || String.IsNullOrEmpty(pass))
+                {
+                    MessageBox.Show("no empty fields allowed");
+                }
+                else
+                {
+                    mySqlConnection.Open();
+                    MySqlCommand mySqlCommand = new MySqlCommand("select * from m_user", mySqlConnection);
+                    MySqlDataReader reader = mySqlCommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        if (id.Equals(reader.GetString("id")) && pass.Equals(reader.GetString("pass")))
+                        {
+                            MessageBox.Show("Login success");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid Login");
+                        }
+                    }
+                    mySqlConnection.Close();
+                }
             }
+            catch (Exception ex) { }
         }
     }
 }
