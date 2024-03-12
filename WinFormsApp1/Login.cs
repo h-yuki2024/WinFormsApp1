@@ -63,6 +63,8 @@ namespace WinFormsApp1
                 }
                 finally
                 {
+                    //•Â‚¶‚Ü‚·//
+                    //‚ ‚ ‚ ‚ //
                     mySqlConnection.Close();
                 }
             }
