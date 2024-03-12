@@ -28,50 +28,56 @@
         /// </summary>
         private void InitializeComponent()
         {
-            IDLabel = new Label();
+            EMailLabel = new Label();
             PASSLabel = new Label();
-            IDTextBox = new TextBox();
+            EMailTextBox = new TextBox();
             PASSTextBox = new TextBox();
             LoginButton = new Button();
             SuspendLayout();
             // 
-            // IDLabel
+            // EMailLabel
             // 
-            IDLabel.AutoSize = true;
-            IDLabel.Location = new Point(254, 120);
-            IDLabel.Name = "IDLabel";
-            IDLabel.Size = new Size(18, 15);
-            IDLabel.TabIndex = 0;
-            IDLabel.Text = "ID";
+            EMailLabel.Anchor = AnchorStyles.Left;
+            EMailLabel.AutoSize = true;
+            EMailLabel.Location = new Point(204, 155);
+            EMailLabel.Name = "EMailLabel";
+            EMailLabel.Size = new Size(68, 15);
+            EMailLabel.TabIndex = 0;
+            EMailLabel.Text = "メールアドレス";
             // 
             // PASSLabel
             // 
+            PASSLabel.Anchor = AnchorStyles.Left;
             PASSLabel.AutoSize = true;
-            PASSLabel.Location = new Point(238, 210);
+            PASSLabel.Location = new Point(238, 256);
             PASSLabel.Name = "PASSLabel";
             PASSLabel.Size = new Size(34, 15);
             PASSLabel.TabIndex = 1;
             PASSLabel.Text = "PASS";
             // 
-            // IDTextBox
+            // EMailTextBox
             // 
-            IDTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            IDTextBox.Location = new Point(354, 120);
-            IDTextBox.Name = "IDTextBox";
-            IDTextBox.Size = new Size(231, 23);
-            IDTextBox.TabIndex = 2;
+            EMailTextBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            EMailTextBox.Location = new Point(354, 155);
+            EMailTextBox.MaxLength = 32;
+            EMailTextBox.Name = "EMailTextBox";
+            EMailTextBox.Size = new Size(239, 23);
+            EMailTextBox.TabIndex = 2;
             // 
             // PASSTextBox
             // 
-            PASSTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            PASSTextBox.Location = new Point(354, 202);
+            PASSTextBox.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            PASSTextBox.Location = new Point(354, 256);
+            PASSTextBox.MaxLength = 8;
             PASSTextBox.Name = "PASSTextBox";
-            PASSTextBox.Size = new Size(231, 23);
+            PASSTextBox.PasswordChar = '●';
+            PASSTextBox.Size = new Size(239, 23);
             PASSTextBox.TabIndex = 3;
             // 
             // LoginButton
             // 
-            LoginButton.Location = new Point(520, 286);
+            LoginButton.Anchor = AnchorStyles.Right;
+            LoginButton.Location = new Point(528, 353);
             LoginButton.Name = "LoginButton";
             LoginButton.Size = new Size(65, 32);
             LoginButton.TabIndex = 4;
@@ -83,12 +89,12 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(808, 450);
             Controls.Add(LoginButton);
             Controls.Add(PASSTextBox);
-            Controls.Add(IDTextBox);
+            Controls.Add(EMailTextBox);
             Controls.Add(PASSLabel);
-            Controls.Add(IDLabel);
+            Controls.Add(EMailLabel);
             Name = "Login";
             Text = "Login";
             ResumeLayout(false);
@@ -97,9 +103,9 @@
 
         #endregion
 
-        private Label IDLabel;
+        private Label EMailLabel;
         private Label PASSLabel;
-        private TextBox IDTextBox;
+        private TextBox EMailTextBox;
         private TextBox PASSTextBox;
         private Button LoginButton;
     }
