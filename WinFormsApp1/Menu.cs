@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WinFormsApp1
 {
-    public partial class LoginOK : Form
+    public partial class Menu : Form
     {
-        public LoginOK()
+        public Menu()
         {
             InitializeComponent();
         }
